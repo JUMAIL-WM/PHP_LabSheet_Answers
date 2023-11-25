@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Student Registration Form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  
+	<h1>Student Registration Form</h1>
+<form action="student.php" method="post">
+  <p>
+    <label for="textfield">Name:</label>
+    <input type="text" name="name" id="textfield">
+  </p>
+  <p>
+    <label for="regno">Reg. No.:</label>
+    <input type="text" name="reg_no" id="regno">
+  </p>
+  <p>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email">
+  </p>
+  <p>
+    <label for="contact_no">Contact No.:</label>
+    <input type="text" name="contact_no" id="contact_no">
+  </p>
+  <p>
+    Gender: <input type="radio" name="gender" id="radio" value="Male"> Male
+    <input type="radio" name="gender" id="radio2" value="Female">
+  <label for="gender">Female</label></p>
+
+  <p>
+    <label for="course">Course:</label>
+    <select name="course" id="course">
+	  <option>Select a Course</option>
+      <option value="hndit">HNDIT</option>
+      <option value="hnda">HNDA</option>
+      <option value="hndm">HNDM</option>
+    </select>
+  </p>
+  <p>
+    <!--<label for="subject[]">Subject:</label>-->
+    <label for="subject">Subject:</label>
+    <!--<select name="subject" multiple="MULTIPLE" id="subject[]">-->
+      <select name="subject" id="subject">
+      <option value="maths">Maths</option>
+      <option value="physics">Physics</option>
+      <option value="chemistery">Chemistry</option>
+      <option value="biology">Biology</option>
+      <option value="marketing">Marketing</option>
+    </select>
+  </p>
+  <p>
+    
+  <label for="subject">Semester: </label>
+	<input name="semester" type="checkbox"  value="1">
+    <input name="semester" type="checkbox"  value="2">
+    <input name="semester" type="checkbox"  value="3">
+    <input name="semester" type="checkbox"  value="4">
+    
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+</form>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record</title>
+     
+</head>
+
+<style>
+    body > table{
+        width: 100%;
+    }
+    
+    table{
+        border-collapse: collapse;
+        text-align: center;
+    }
+    table.list{
+        width:100%;
+        text-align: center;
+    }
+    table.list td{
+        text-align: center;
+    }
+    td, th {
+        border: 3px solid black;
+        text-align: left;
+        padding: 15px;
+    }
+    tr:nth-child(even),table.list thead>tr {
+        background-color: #C1C1C1;
+    }
+    input[type=text], input[type=number] {
+        width: 100%;
+        padding: 5px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type=submit]{
+        width: 35%;
+        background-color: #ddd;
+        color: #000;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    form{
+        background-color: #CD6155;
+        padding: 15px;
+    
+    }
+    form div.form-action-buttons{
+        text-align: center;
+    
+    }
+    a{
+        cursor: pointer;
+        text-decoration: underline;
+        color: #0000ee;
+        margin-right: 4px;
+    }
+    label.validation-error{
+        color:   red;
+        margin-left: 5px;
+    }
+    .hide{
+        display:none;
+    }
+</style>
+
+<body style="background:linear-gradient(135deg,#150339,#73C6B6 );">
+	<CENTER>
+            <h1 style="COLOR:WHITE;"> Student Records</h1>
+    </CENTER>
+
+    <a href="./Login.html"><input type="Submit" name="" value="Log Out" style="font-size: 15px; width: 100px; height: 40px;
+    margin-left: 1200px; background-color: black; color: white; border-radius: 10px; text-align: center;"></a>
+   
+    
+<table>
+
+    <tr>
+        <td>
+            <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+            <h3>Student Form</h3>
+                
+                <div>
+                    <label>Full Name</label>
+                    <label class="validation-error hide" id="userNamevalidationError">This field is required</label>
+                    <input type="text" name="userName" id="userName" placeholder="Enter the user Name">
+                </div>
+    
+                <div>
+                    <label>Rollno</label>
+                    <label class="validation-error hide" id="rollNovalidationError" >This field is required</label>
+                    <input type="text" name="rollNo" id="rollNo" placeholder="Enter the Roll number">
+                </div>
+
+                <div>
+                    <label>Student Class</label>
+                    <label class="validation-error hide" id="stdClassvalidationError">This field is required</label> 
+                    <input type="text" name="stdClass" id="stdClass" placeholder="Enter the Student Class">
+                </div>
+
+                <div>
+                    <label>Total Subject</label>
+                    <label class="validation-error hide" id="tsubvalidationError">This field is required</label>   
+                    <input type="number" name="tsub" id="tsub" placeholder="Enter the Total Subjects">
+                </div>
+               
+                <div>
+                    <label>Age</label>   
+                    <label class="validation-error hide" id="agevalidationError">This field is required</label> 
+                    <input type="number" name="age" id="age" placeholder="Enter the Age">
+                </div>
+                   
+                <div class="form-action-buttons">
+                
+                    <input type="submit" value="Submit" >
+
+                </div>
+
+        </form>
+    </td>
+            
+        <td>
+    
+             <table class="list" id="stdlist" style="background-color: #C2976D;">
+                    
+                <thead>
+                    
+                    <tr>
+                        <th>Full Namme</th>
+                        <th> Roll no</th>
+                        <th>Class</th>
+                        <th>Total Subject</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+                
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<script>
+       var selectedRow = null
+
+// Form Submit Function
+function onFormSubmit() {
+    // check validity
+    if (validate()) {
+        // store user data
+        var formData = readFormData();
+        // check empty row
+        if (selectedRow == null)
+        {
+            // Insert New User Record
+            insertNewRecord(formData);
+        }
+        else
+        {
+            // Update New User Record
+            updateRecord(formData);
+        }
+        // Reset Input Values
+        resetForm();
+    }
+}
+// Get Values From Form
+function readFormData() {
+    var formData = {};
+    // Get Values From  Input
+    formData["userName"] = document.getElementById("userName").value;
+    formData["rollNo"] = document.getElementById("rollNo").value;
+    formData["stdClass"] = document.getElementById("stdClass").value;
+    formData["tsub"] = document.getElementById("tsub").value;
+    formData["age"] = document.getElementById("age").value;
+    // return Form Data
+    return formData;
+}
+// Insert New User Record
+function insertNewRecord(data) {
+    var table = document.getElementById("stdlist").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.userName;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.rollNo;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.stdClass;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.tsub;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = data.age;
+    cell5 = newRow.insertCell(5);
+    cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
+    <a onClick="onDelete(this)">Delete</a>`;
+}
+// Reset Function
+function resetForm() {
+    document.getElementById("userName").value = "";
+    document.getElementById("rollNo").value = "";
+    document.getElementById("stdClass").value = "";
+    document.getElementById("tsub").value = "";
+    document.getElementById("age").value = "";
+    selectedRow = null;
+}
+// Edit Function
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("userName").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("rollNo").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("stdClass").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("tsub").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("age").value = selectedRow.cells[4].innerHTML;
+}
+// Update Record
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.userName;
+    selectedRow.cells[1].innerHTML = formData.rollNo;
+    selectedRow.cells[2].innerHTML = formData.stdClass;
+    selectedRow.cells[3].innerHTML = formData.tsub;
+    selectedRow.cells[4].innerHTML = formData.age;
+}
+// Delete Function
+function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("stdlist").deleteRow(row.rowIndex);
+         resetForm();
+    }
+}
+// Check User validation
+function validate() {
+    isValid = true;
+    // userName validation
+    if (document.getElementById("userName").value == "") {
+        isValid = false;
+        document.getElementById("userNamevalidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("userNamevalidationError").classList.contains("hide"))
+        {
+            document.getElementById("userNamevalidationError").classList.add("hide");
+        }
+         }
+    // Roll No validation
+    if (document.getElementById("rollNo").value == "") {
+        isValid = false;
+        document.getElementById("rollNovalidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("rollNovalidationError").classList.contains("hide"))
+        {
+            document.getElementById("rollNovalidationError").classList.add("hide");
+        }
+    }
+    // Std class validation
+    if (document.getElementById("stdClass").value == "") {
+        isValid = false;
+        document.getElementById("stdClassvalidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("stdClassvalidationError").classList.contains("hide"))
+        {
+            document.getElementById("stdClassvalidationError").classList.add("hide");
+        }
+    }
+    // Tsub validation
+    if (document.getElementById("tsub").value == "") {
+        isValid = false;
+        document.getElementById("tsubvalidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("tsubvalidationError").classList.contains("hide"))
+        {
+            document.getElementById("tsubvalidationError").classList.add("hide");
+        }
+    }
+    // Age validation
+    if (document.getElementById("age").value == "") {
+        isValid = false;
+        document.getElementById("agevalidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("agevalidationError").classList.contains("hide"))
+        {
+            document.getElementById("agevalidationError").classList.add("hide");
+        }
+    }
+    return isValid;
+}
+   </script>

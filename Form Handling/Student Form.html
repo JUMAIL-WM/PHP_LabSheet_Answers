@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="Register_Form.php" method="post">
+
+
+<h1> Student Registration Form</h1> <br>
+
+Name:
+<input type="text" name="name" > <br>
+
+Registration Number:
+<input type="text" name="regno"> <br>
+
+Email:
+<input type="email" name="email"> <br>
+
+Contact Number:
+<input type="text" name="contactno"> <br>
+
+Gender:
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<br>
+
+Course:
+<select name="course" >
+    <option value="Select Course"> Select Course </option>
+    <option value="HNDIT"> HNDIT </option>
+    <option value="HNDIA"> HNDIA </option>
+    <option value="HNDIE"> HNDIE </option>
+    <option value="HNDIM"> HNDIM </option> 
+</select> <br><br>
+
+Subject:
+<select name="Subject[]" multiple="multiple">
+    
+    <option value="IT"> IT </option>
+    <option value="JAVA"> JAVA </option>
+    <option value="OOP"> OOP </option>
+    <option value="PHP"> PHP </option> 
+    <option value="IT"> IT </option>
+    <option value="JAVA"> JAVA </option>
+    <option value="OOP"> OOP </option>
+    <option value="PHP"> PHP </option>
+</select> <br>
+
+
+Semester:
+<input type="checkbox" name="semester" value="1st"> 1st
+<input type="checkbox" name="semester" value="2nd"> 2nd
+<input type="checkbox" name="semester" value="3rd"> 3rd
+<input type="checkbox" name="semester" value="4th"> 4th
+<br>
+
+<input type="submit" name="Register" value="Register">
+
+
+    </form>
+</body>
+</html>

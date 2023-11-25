@@ -1,0 +1,157 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	min-height: 100vh;
+	background: #085E92;
+}
+.form-box{
+	position: relative;
+	width: 380px;
+	height: 600px;
+	background: linear-gradient(135deg,#150339,red);
+	overflow: hidden;
+	border-radius: 8px;
+}
+.form-box::before{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 520px;
+	background: linear-gradient(0deg, transparent,#fff);
+	animation: animate 6s linear infinite;
+	transform-origin: bottom right;
+
+}
+.form-box:after {
+	content: ' ';
+	position: absolute;
+	top:-50% ;
+	left:-50% ;
+	width: 380px;
+	height: 520px;
+	
+	animation: animate 6s linear infinite;
+	transform-origin: bottom right;
+	animation-delay: -3s;
+
+}
+
+
+
+
+.form{
+	display: flex;
+	position: absolute;
+	inset: 5px;
+	border-radius: 8px;
+	background: #26A598;
+	z-index: 10px;
+	padding: 50px 40px;
+	flex-direction: column;
+
+}
+.form h2{
+	font-size: 30px;
+	color: #fff;
+	font-weight: 600;
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+.form h2::before{
+	position: absolute;
+	top: 100px;
+	left: 135px;
+	content: '';
+	background: #fff;
+	height: 2px;
+	width: 100px;
+
+}
+.input-box{
+	position: relative;
+	width: 300px;
+	margin-top: 35px;
+}
+.input-box input {
+	position: relative;
+	width: 100%;
+	padding: 20px 10px 10px;
+	background: transparent;
+	border: none;
+	outline: none;
+    color: #000;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    z-index: 10;
+}
+.input-box span{
+	position: absolute;
+	left: 0;
+	padding: 20px 10px 10px;
+	font-size: 1em;
+	color: #fff;
+	pointer-events: none;
+	letter-spacing: 0.05em;
+	transition: 0.3s;
+}
+.input-box input:valid ~ span,
+.input-box input:focus ~ span{
+	color: #fff;
+	transform: translateY(-34px);
+	font-size: 0.75em;
+
+}
+.input-box i{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:2px;
+	background:#fff;
+	border-radius:4px;
+	transition: 0.3s;
+	pointer-events:none;
+	z-index:9;
+}
+.input-box input:valid ~ i 
+.Input-box input:focus ~ i{
+	height: 43px;
+}
+.links{
+	display:flex;
+	justify-content:space-between;
+}
+.links a {
+	margin:20px 0;
+	font-size: 0.75em;
+	color: #fff;
+	text-decoration: none;
+}
+.links a:hover,.links a:nth-child(2){
+	color: aqua;
+}
+.btn{
+	border: none;
+	outline: none;
+	background: #fff;
+	padding: 11px 25px;
+	border-radius: 10px;
+	font-weight: 600;
+	cursor: pointer;
+	font-size:16px;
+	
+}
+.btn:hover{
+	background: #05e3ee;
+	transition: 0.2s;
+}
